@@ -12,4 +12,5 @@ export interface CadastrarPetRequest {
 
 export interface PetRepository {
     create(data:CadastrarPetRequest):Promise<Pet>
+    findPetsInCity(city:string):Promise<Pet[]>
 }
