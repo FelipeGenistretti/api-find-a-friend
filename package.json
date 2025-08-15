@@ -1,0 +1,26 @@
+{
+  "name": "api-find-a-friend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.2.1",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@fastify/jwt": "^10.0.0",
+    "@prisma/client": "^6.13.0",
+    "fastify": "^5.4.0",
+    "prisma": "^6.13.0",
+    "zod": "^4.0.17"
+  }
+}

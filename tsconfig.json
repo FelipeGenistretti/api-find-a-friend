@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    // Diretórios
+    // "rootDir": "./src",
+    // "outDir": "./dist",
+
+    // Ambiente Node ESM
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "target": "esnext",
+    "lib": ["esnext"],
+    "types": ["node"],
+
+    // Mapas e declarações
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Regras mais seguras
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // Recomendações
+    "strict": true,
+    "jsx": "react-jsx",
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true
+  }
+}
