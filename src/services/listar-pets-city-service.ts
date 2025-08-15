@@ -6,7 +6,7 @@ export interface ListarPetsCityResponse{
     pets:Pet[];
 }
 
-class ListarPetsCity{
+class ListarPetsCityService{
     constructor(
         private petRepository:PetRepository
     ){}
@@ -21,3 +21,5 @@ class ListarPetsCity{
         return { pets }
     }
 }
+
+export { ListarPetsCityService }
