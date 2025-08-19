@@ -11,6 +11,7 @@ export interface CadastrarPetRequest {
 }
 
 export interface PetRepository {
+    countPetsInCity(city:string):Promise<number>
     create(data:CadastrarPetRequest):Promise<Pet>
-    findPetsInCity(city:string):Promise<Pet[]>
+    findPetsInCity(city:string, page:number, perPage:number):Promise<Pet[]>
 }

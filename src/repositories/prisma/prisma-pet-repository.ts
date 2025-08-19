@@ -2,10 +2,20 @@ import { includes } from "zod";
 import { Pet } from "../../../generated/prisma/index.js";
 import { prisma } from "../../http/lib/prisma.js";
 import { CadastrarPetRequest, PetRepository } from "../contracts/pet-repository.js";
+import { skip } from "@prisma/client/runtime/library";
 
 
 class PrismaPetRepository implements PetRepository{
-    async findPetsInCity(city: string): Promise<Pet[]> {
+    async countPetsInCity(city: string):Promise<number> {
+        const total = await prisma.pets.count({
+            where:{
+                org:{city}
+            }
+        })
+        return total;
+    }
+
+    async findPetsInCity(city: string, page=1, perPage=10): Promise<Pet[]> {
         const pets = await prisma.pets.findMany({
             where: {
                 org : {
@@ -15,6 +25,8 @@ class PrismaPetRepository implements PetRepository{
             include : {
                 org:true,
             },
+            skip:(page - 1) * perPage,
+            take: perPage
         });
         return pets
     }
