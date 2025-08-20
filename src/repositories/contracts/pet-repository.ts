@@ -11,14 +11,15 @@ export interface CadastrarPetRequest {
 }
 
 export interface FiltroPetsRequest {
-  city: string; // city quase sempre obrigatório
-  age?: "FILHOTE" | "ADULTO" | "IDOSO";
-  independence?: "BAIXA" | "MEDIA" | "ALTA";
-  environment?: "PEQUENO" | "MEDIO" | "AMPLO";
-  energyLevel?: number;
+  city: string;
+  age?: "FILHOTE" | "ADULTO" | "IDOSO" | undefined;
+  independence?: "BAIXA" | "MEDIA" | "ALTA" | undefined;
+  environment?: "PEQUENO" | "MEDIO" | "AMPLO" | undefined;
+  energyLevel?: number | undefined;
   page?: number;
   perPage?: number;
 }
+
 
 
 export interface PetRepository {
@@ -26,5 +27,6 @@ export interface PetRepository {
     create(data: CadastrarPetRequest): Promise<Pet>;
     findPetsInCity(city: string, page: number, perPage: number): Promise<Pet[]>;
     filtrarPetPorCaracteristica(filtros: FiltroPetsRequest): Promise<Pet[]>;
-    countPetsPorCaracteristica(filtros: FiltroPetsRequest): Promise<number>; // <- adicione isso
+    countPetsPorCaracteristica(filtros: FiltroPetsRequest): Promise<number>; 
+    getPetById(id:string):Promise<Pet>;
 }

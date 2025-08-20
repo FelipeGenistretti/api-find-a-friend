@@ -1,4 +1,5 @@
 import { Org, Pet } from "../../../generated/prisma/index.js"
+import { CadastrarOrgRequest } from "../../services/cadastrar-org-service.js"
 
 
 export interface CadastrarPetRequest {
@@ -13,4 +14,6 @@ export interface CadastrarPetRequest {
 
 export interface OrgRepository {
     findById(id:string):Promise<Org | null>
+    create(data:CadastrarOrgRequest):Promise<Org>
+    findByEmail(email:string):Promise<Org | null>
 }

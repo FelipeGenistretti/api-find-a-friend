@@ -1,18 +1,28 @@
-import { includes } from "zod";
 import { Pet } from "../../../generated/prisma/index.js";
 import { prisma } from "../../http/lib/prisma.js";
 import { CadastrarPetRequest, FiltroPetsRequest, PetRepository } from "../contracts/pet-repository.js";
-import { skip } from "@prisma/client/runtime/library";
+
 
 
 class PrismaPetRepository implements PetRepository{
+    async getPetById(id: string): Promise<Pet> {
+        const pet = await prisma.pets.findUnique({
+            where:{
+                id
+            },
+            include:{org:true}
+        })
+
+        return pet
+    }
+    
     async filtrarPetPorCaracteristica(filtros: FiltroPetsRequest): Promise<Pet[]> {
          const { city, age, independence, environment, energyLevel, page = 1, perPage = 10 } = filtros;
 
          const where: any= {}
 
          if (city){
-            where.org = {city}
+            where.org = {city:city}
          }
 
          if (age){
@@ -57,7 +67,7 @@ class PrismaPetRepository implements PetRepository{
         const where: any = {};
 
         if (city) {
-            where.org = { city };
+            where.org = { city:city };
         }
 
         if (age) {
