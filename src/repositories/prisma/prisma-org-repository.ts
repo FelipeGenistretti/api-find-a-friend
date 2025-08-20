@@ -6,7 +6,7 @@ import { OrgRepository } from "../contracts/org-repository.js";
 
 class PrismaOrgRepository implements OrgRepository{
     async findByEmail(email: string): Promise<Org | null> {
-        const org = await prisma.orgs.findUnique({
+        const org = await prisma.org.findUnique({
             where:{
                 email
             }
@@ -15,7 +15,7 @@ class PrismaOrgRepository implements OrgRepository{
     }
 
     async create(data: CadastrarOrgRequest): Promise<Org> {
-        const org = await prisma.orgs.create({
+        const org = await prisma.org.create({
             data
         })
 
@@ -23,7 +23,7 @@ class PrismaOrgRepository implements OrgRepository{
     }
 
     async findById(orgId: string): Promise<Org | null> {
-        const org = await prisma.orgs.findUnique({
+        const org = await prisma.org.findUnique({
             where:{id:orgId}
         })
         return org

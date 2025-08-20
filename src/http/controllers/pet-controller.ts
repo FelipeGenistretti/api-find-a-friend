@@ -1,10 +1,8 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import z, { string } from "zod";
+import { z } from "zod";
 import { makeCadastrarPetService } from "../../services/factories/make-cadastrar-pet-service.js";
 import { makeListarPetCityService } from "../../services/factories/make-listar-pets-city-service.js";
-import { Independence } from "../../../generated/prisma/index.js";
 import { makeListarPetCaracteristicaService } from "../../services/factories/make-listar-pet-caracteristca-service.js";
-import { id } from "zod/locales";
 import { makeGetPetByIdService } from "../../services/factories/make-get-pet-by-id-service.js";
 
 class PetController{
