@@ -102,7 +102,7 @@ class PetController{
             id:z.string().uuid()
         })
 
-        const { id } = await paramSchema.parse(request.params)
+        const { id } = paramSchema.parse(request.params)
 
         try {
             const getPetByIdService = makeGetPetByIdService()
